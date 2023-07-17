@@ -1,0 +1,26 @@
+﻿@model List<Product>
+@*@model IEnumerable<Product>*@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h3>Page "@ViewData["Title"]"  @ViewData["Message"]</h3>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<ul>
+@foreach (string user in ViewBag.Users)
+{
+        <li>@user</li>
+}
+</ul>
+
+<h4>List Products</h4>
+<ul>
+    @foreach (var product in Model)
+    {
+    <li>@product.Name</li>
+    }
+</ul>
