@@ -37,7 +37,7 @@ namespace DataAccess.Data
                     CategoryId=1
                 },
                 new Product(){
-                    Id=3,
+                    Id=4,
                     Name="Мобільний телефон Samsung Galaxy A24 6/128GB Black (SM-A245FZKVSEK)",
                     Description="Екран (6.5\", Super AMOLED, 2340x1080) / Mediatek Helio G99 (2 x 2.6 ГГц + 6 x 2.0 ГГц) / основна потрійна камера: 50 Мп + 5 Мп + 2 Мп, фронтальна камера: 13 Мп / RAM2 ГБ вбудованої пам'яті + microSD (до 1 ТБ) / 3G / LTE / GPS / ГЛОНАСС / BDS / підтримка 2х SIM-карток (Nano-SIM) / Android 13 / 5000 мА * год",
                     Price=8999,

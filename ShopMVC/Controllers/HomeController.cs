@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShopMVC.Helper;
 using ShopMVC.Models;
 using System.Diagnostics;
@@ -10,12 +12,14 @@ namespace ShopMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly List<Product> _products;
+        //private readonly List<Product> _products;
+        private readonly ShopMVCDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ShopMVCDbContext context)
         {
             _logger = logger;
-            _products = SeedData.Products;
+            _context = context; 
+            //_products = SeedData.Products;
         }
 
         //ViewData
@@ -27,7 +31,9 @@ namespace ShopMVC.Controllers
 
             ViewData["Message"] = " is developing...";
             ViewBag.Users = new List<string> { "Admin", "Author", "Guest" };
-            return View(_products);
+            //return View(_products);
+            var products = _context.Products.Include(product=>product.Category).ToList();
+            return View(products);
 
         }
 
