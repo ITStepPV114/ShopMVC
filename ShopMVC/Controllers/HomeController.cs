@@ -15,7 +15,7 @@ namespace ShopMVC.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _products = new List<Product>(SeedData.GetProduct());
+            _products = SeedData.Products;
         }
 
         //ViewData

@@ -7,10 +7,12 @@ namespace ShopMVC.Helper
     public static class SeedData
     {
         public static List<Product> Products { get; set; }
-        static SeedData() {
+        static SeedData()
+        {
             Products = SeedData.GetProduct();
         }
-            public static List<Product> GetProduct() {
+        public static List<Product> GetProduct()
+        {
             return new List<Product>() {
                 new Product(){
                     Id=1,
@@ -31,7 +33,7 @@ namespace ShopMVC.Helper
                     Price=42788
                 }
             };
-           
+
         }
-     }
+    }
 }

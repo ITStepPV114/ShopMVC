@@ -7,7 +7,9 @@
             <h5 class="card-title">@Model.Name</h5>
             <p class="card-text">@Model.Description</p>
             <p class="fw-bold">Price <span class="badge bg-primary">@Model.Price</span></p>
+            @*href="~\Product\Index"*@
             <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go to Back</a>
+            <a asp-controller="Product" asp-action="Delete" asp-route-id=@Model.Id class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>
