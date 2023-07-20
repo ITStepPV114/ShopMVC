@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model DataAccess.Models.Product
 
 <div class="container">
     <div class="card">
@@ -6,8 +6,9 @@
         <div class="card-body">
             <h5 class="card-title">@Model.Name</h5>
             <p class="card-text">@Model.Description</p>
+            <p class="card-text">Category:<em/><strong> @Model.Category?.Name </strong> </em> </p>
             <p class="fw-bold">Price <span class="badge bg-primary">@Model.Price</span></p>
-            @*href="~\Product\Index"*@
+             @*href="~\Product\Index"*@
             <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go to Back</a>
             <a asp-controller="Product" asp-action="Delete" asp-route-id=@Model.Id class="btn btn-danger">Delete</a>
         </div>

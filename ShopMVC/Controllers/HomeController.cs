@@ -1,7 +1,6 @@
 ﻿using DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShopMVC.Helper;
 using ShopMVC.Models;
 using System.Diagnostics;
 
