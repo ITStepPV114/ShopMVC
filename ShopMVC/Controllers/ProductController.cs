@@ -1,4 +1,5 @@
 ﻿using DataAccess.Data;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopMVC.Models;
@@ -15,6 +16,9 @@ namespace ShopMVC.Controllers
 
         public IActionResult Index()
         {
+            List<Category> categories=_context.Categories.ToList();
+            ViewBag.ListCategories = categories;
+            ViewData["ListCategories"] = categories;
             //TODO: dbcontext
             var products = _context.Products.Include(p => p.Category).ToList();
             return View(products);

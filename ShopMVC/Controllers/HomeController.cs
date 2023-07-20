@@ -1,4 +1,5 @@
 ﻿using DataAccess.Data;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopMVC.Models;
@@ -25,13 +26,28 @@ namespace ShopMVC.Controllers
         //ViewBag
         //Mode view
         // 
-        public IActionResult Index(string name)
+        public IActionResult Index(int? category_id)
         {
+            List<Category> categories = _context.Categories.ToList();
+            categories.Insert(0, new Category { Id = 0, Name = "All", Description = "All Products" });
+            ViewBag.ListCategories = categories;
+            ViewData["ListCategories"] = categories;
+            var products = _context.Products.Include(product => product.Category).ToList();
+            if (category_id!=null && category_id > 0)
+            {
+                products = products.Where(p => p.CategoryId == category_id).ToList();
 
-            ViewData["Message"] = " is developing...";
-            ViewBag.Users = new List<string> { "Admin", "Author", "Guest" };
-            //return View(_products);
-            var products = _context.Products.Include(product=>product.Category).ToList();
+            }
+
+            //for defination active link or disabled
+            if (category_id == null)
+            {
+                ViewBag.ActiveCategoryId = 0;
+            }
+            else {
+                ViewBag.ActiveCategoryId = category_id;
+            }
+           
             return View(products);
 
         }

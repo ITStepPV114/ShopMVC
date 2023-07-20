@@ -5,38 +5,70 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h3>Page "@ViewData["Title"]"  @ViewData["Message"]</h3>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<ul>
-@foreach (string user in ViewBag.Users)
-{
-        <li>@user</li>
-}
-</ul>
-
 <h4>List Products</h4>
 <div class="container">
-        <h3>Count product: @Model.Count()</h3>
-        <div class="row">
-            @foreach (var product in Model)
-            {
-                <div class="col-sm-4">
-                    <div class="card">
-                    <img src="@product.ImagePath" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">@product.Name</h5>
+    <div class="row">
+        <div class="col-3">
+            <!-- start col-3 -->
+            @*navigation category*@
+            <ul class="nav flex-column">
+                @foreach (var category in ViewBag.ListCategories)
+                {
 
-                            <p class="card-text">@product.Description</p>
-                            <p class="fw-bold">Price <span class="badge bg-primary">@product.Price</span></p>
-                            <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id class="btn btn-dark">Details</a>
-                            <a asp-controller="Product" asp-action="Delete" asp-route-id=@product.Id class="btn btn-danger">Delete</a>
+                    @if (ViewBag.ActiveCategoryId == category.Id)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-current="page">@category.Name</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Index" asp-route-category_id="@category.Id" class="nav-link active" aria-current="page">@category.Name</a>
+                        </li>
+                    }
+                }
+                @*  <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+                </li>*@
+            </ul>
+
+        </div> <!-- close col-3 -->
+        <div class="col-9">
+            <!-- start col-3 -->
+            @if (Model.Any())
+            {
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <img src="@product.ImagePath" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Name</h5>
+
+                                    <p class="card-text">@product.Description</p>
+                                    <p class="fw-bold">Price <span class="badge bg-primary">@product.Price</span></p>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id class="btn btn-dark">Details</a>
+                                    <a asp-controller="Product" asp-action="Delete" asp-route-id=@product.Id class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             }
-        </div>
-
-</div>
+            else
+            {
+                <div class="row">
+                    <h3>Products was not found...</h3>
+                </div>
+            }
+        </div> <!-- close col-9 -->
+    </div> <!-- close row -->
+</div> <!-- close container -->
