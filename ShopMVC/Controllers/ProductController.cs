@@ -6,7 +6,7 @@ namespace ShopMVC.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly List<Product> _products;
+        private readonly List<ShopMVC.Models.Product> _products;
         public ProductController()
         {
             _products = SeedData.Products;

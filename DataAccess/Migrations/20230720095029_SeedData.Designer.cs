@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ShopMVCDbContext))]
-    [Migration("20230719174404_SeedData")]
+    [Migration("20230720095029_SeedData")]
     partial class SeedData
     {
         /// <inheritdoc />

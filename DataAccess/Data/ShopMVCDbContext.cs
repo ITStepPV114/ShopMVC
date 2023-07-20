@@ -23,7 +23,8 @@ namespace DataAccess.Data
         //    optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ShopMVC;Integrated Security=True;"); 
         //}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(SeedData.GetCategory());
             modelBuilder.Entity<Product>().HasData(SeedData.GetProduct());
