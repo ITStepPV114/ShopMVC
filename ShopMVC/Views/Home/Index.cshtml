@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    string productImagePlaceholder = @"https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png";
 }
 
 <h4>List Products</h4>
@@ -49,7 +50,7 @@
                     {
                         <div class="col-sm-4">
                             <div class="card">
-                                <img src="@product.ImagePath" class="card-img-top" alt="...">
+                                <img src="@(product.ImagePath??productImagePlaceholder)" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">@product.Name</h5>
 

@@ -1,6 +1,7 @@
 ﻿using DataAccess.Data;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopMVC.Models;
 
@@ -42,8 +43,45 @@ namespace ShopMVC.Controllers
             }
             return RedirectToAction(nameof(Index), "Home");
            // return Redirect("~/Home/Index");
-           
-            
+                    
+        }
+
+        [HttpGet]
+        public IActionResult Create() {
+            var categories = _context.Categories.ToList();
+            ViewBag.ListCategory = new SelectList(categories,"Id","Name");
+           return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int? id) {
+          
+            var product = _context.Products.Include(p=>p.Category).FirstOrDefault(p => p.Id == id);
+            if (product != null)
+            {
+                var categories = _context.Categories.ToList();
+                ViewBag.ListCategory = new SelectList(categories, "Id", "Name",product.CategoryId);
+                return View(product);
+
+            }
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
