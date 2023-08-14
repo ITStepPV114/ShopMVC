@@ -20,3 +20,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+
+.product-card-img {
+    height: 150px;
+    margin-left: 15px;
+    margin-right: 15px;
+  
+}
+    .product-card-img img {
+      /*  width: 100%;*/
+        height: 100%;
+        object-fit:contain;
+    }

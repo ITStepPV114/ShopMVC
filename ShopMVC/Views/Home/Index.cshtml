@@ -50,7 +50,9 @@
                     {
                         <div class="col-sm-4">
                             <div class="card">
-                                <img src="@(product.ImagePath??productImagePlaceholder)" class="card-img-top" alt="...">
+                                <div class="product-card-img">
+                                    <img src="@(product.ImagePath??productImagePlaceholder)" class="card-img-top" alt="...">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">@product.Name</h5>
 
