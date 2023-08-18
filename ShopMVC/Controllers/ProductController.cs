@@ -56,6 +56,12 @@ namespace ShopMVC.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
+            if (!ModelState.IsValid)
+            {
+                var categories = _context.Categories.ToList();
+                ViewBag.ListCategory = new SelectList(categories, "Id", "Name");
+                return View(product);
+            }
             _context.Products.Add(product);
             _context.SaveChanges();
             return RedirectToAction("Index");
