@@ -25,13 +25,13 @@ namespace DataAccess.Entities
         //[Key]
         public int Id { get; set; }
         //[Required, MinLength(3)]
-        [Required (ErrorMessage ="Name is required"), StringLength(100, MinimumLength = 2)]
+        //[Required (ErrorMessage ="Name is required"), StringLength(100, MinimumLength = 2)]
         public string Name { get; set; }
         public string? Description { get; set; }
-        [Range(0,double.MaxValue, ErrorMessage="Price must be greater than or equal to 0")]
+        //[Range(0,double.MaxValue, ErrorMessage="Price must be greater than or equal to 0")]
         public decimal Price { get; set; }
-        [Url]
-        [DisplayName("Image Path URL")]
+        //[Url]
+        //[DisplayName("Image Path URL")]
         public string? ImagePath { get; set; }
        // [ForeignKey("Category")]
         public int CategoryId { get; set; }

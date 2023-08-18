@@ -1,6 +1,9 @@
 using DataAccess.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -9,6 +12,10 @@ builder.Services.AddControllersWithViews();
 string connection = builder.Configuration.GetConnectionString("ShopMVCConnection") ?? throw new InvalidOperationException("Connection string 'ShopMVCConnection' not found.");
 //add contect WebAppLibraryContext as service by application
 builder.Services.AddDbContext<ShopMVCDbContext>(options => options.UseSqlServer(connection));
+
+//add Fluent Validators
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

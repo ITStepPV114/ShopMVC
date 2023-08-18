@@ -28,6 +28,26 @@ namespace DataAccess.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(SeedData.GetCategory());
             modelBuilder.Entity<Product>().HasData(SeedData.GetProduct());
+
+            //Set Primary Key
+            modelBuilder.Entity<Product>().HasKey(x => x.Id);
+
+            //Set Property configurations
+            modelBuilder.Entity<Product>()
+                        .Property(x => x.Name)
+                        .HasMaxLength(150)
+                        .IsRequired();
+
+            //Set Relationship configurations
+            modelBuilder.Entity<Product>()
+                .HasOne<Category>(x => x.Category)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CategoryId);
+
+
+
+
+
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; } 
