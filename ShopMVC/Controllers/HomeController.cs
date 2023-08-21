@@ -18,7 +18,8 @@ namespace ShopMVC.Controllers
         public HomeController(ILogger<HomeController> logger, ShopMVCDbContext context)
         {
             _logger = logger;
-            _context = context; 
+            _context = context;
+           
             //_products = SeedData.Products;
         }
 
@@ -28,6 +29,13 @@ namespace ShopMVC.Controllers
         // 
         public IActionResult Index(int? category_id)
         {
+            //Example using Cookies
+            //append Cookie
+            //HttpContext.Response.Cookies.Append("name", "Tetiana");
+            //get Cookie
+            //ViewBag.NameAuthor = HttpContext.Request.Cookies["name"];
+            //delete Cookie
+            HttpContext.Response.Cookies.Delete("name");
             List<Category> categories = _context.Categories.ToList();
             categories.Insert(0, new Category { Id = 0, Name = "All", Description = "All Products" });
             ViewBag.ListCategories = categories;

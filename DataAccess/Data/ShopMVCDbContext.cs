@@ -1,10 +1,6 @@
 ﻿using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DataAccess.EntiitesConfiguration;
 
 namespace DataAccess.Data
 {
@@ -29,23 +25,27 @@ namespace DataAccess.Data
             modelBuilder.Entity<Category>().HasData(SeedData.GetCategory());
             modelBuilder.Entity<Product>().HasData(SeedData.GetProduct());
 
-            //Set Primary Key
-            modelBuilder.Entity<Product>().HasKey(x => x.Id);
+            #region Fluemt API => Configurations
+            ////Set Primary Key
+            //modelBuilder.Entity<Product>().HasKey(x => x.Id);
 
-            //Set Property configurations
-            modelBuilder.Entity<Product>()
-                        .Property(x => x.Name)
-                        .HasMaxLength(150)
-                        .IsRequired();
+            ////Set Property configurations
+            //modelBuilder.Entity<Product>()
+            //            .Property(x => x.Name)
+            //            .HasMaxLength(150)
+            //            .IsRequired();
 
-            //Set Relationship configurations
-            modelBuilder.Entity<Product>()
-                .HasOne<Category>(x => x.Category)
-                .WithMany(x => x.Products)
-                .HasForeignKey(x => x.CategoryId);
+            ////Set Relationship configurations
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<Category>(x => x.Category)
+            //    .WithMany(x => x.Products)
+            //    .HasForeignKey(x => x.CategoryId);
+            #endregion
 
-
-
+            // ApplyConfigurations for Entities 
+            // modelBuilder.ApplyConfigurationsFromAssembly(typeof(ShopMVCDbContext).Assembly);
+            // or 
+            //modelBuilder.ApplyConfiguration(new ProductConfiguration());
 
 
         }

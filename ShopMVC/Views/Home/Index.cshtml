@@ -7,6 +7,16 @@
 }
 
 <h4>List Products</h4>
+@if (Context.Request.Cookies.ContainsKey("name"))
+{
+    <p>    @Context.Request.Cookies["name"]</p>
+    <p>    @ViewBag.NameAuthor</p>
+}
+else
+{
+    
+<p>Not Cookies</p>
+}
 <div class="container">
     <div class="row">
         <div class="col-3">
