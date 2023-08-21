@@ -35,7 +35,8 @@ namespace ShopMVC.Controllers
             //get Cookie
             //ViewBag.NameAuthor = HttpContext.Request.Cookies["name"];
             //delete Cookie
-            HttpContext.Response.Cookies.Delete("name");
+            //HttpContext.Response.Cookies.Delete("name");
+
             List<Category> categories = _context.Categories.ToList();
             categories.Insert(0, new Category { Id = 0, Name = "All", Description = "All Products" });
             ViewBag.ListCategories = categories;
