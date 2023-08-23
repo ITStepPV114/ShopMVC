@@ -26,7 +26,7 @@ namespace ShopMVC.Controllers
             if (idList == null) idList = new List<int>();
             idList.Add(id); //add id of product to cart
             HttpContext.Session.SetObject<List<int>>("mycart",idList);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),"Home");
         }
 
 
@@ -37,7 +37,7 @@ namespace ShopMVC.Controllers
             if (idList == null) idList = new List<int>();
             idList.Remove(id); //delete id of product to cart
             HttpContext.Session.SetObject<List<int>>("mycart", idList);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Home");
         }
     }
 }

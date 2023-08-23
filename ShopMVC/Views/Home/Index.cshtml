@@ -1,4 +1,4 @@
-﻿@model List<DataAccess.Entities.Product>
+﻿@model List<ProductCartViewModel>
 @*@model IEnumerable<Product>*@
 
 @{
@@ -61,16 +61,26 @@ else
                         <div class="col-sm-4">
                             <div class="card">
                                 <div class="product-card-img">
-                                    <img src="@(product.ImagePath??productImagePlaceholder)" class="card-img-top" alt="...">
+                                    <img src="@(product.Product.ImagePath??productImagePlaceholder)" class="card-img-top" alt="...">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">@product.Name</h5>
+                                    <h5 class="card-title">@product.Product.Name</h5>
 
-                                    <p class="card-text">@product.Description</p>
-                                    <p class="fw-bold">Price <span class="badge bg-primary">@product.Price</span></p>
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id asp-route-returnUrl="@Context.Request.Path" class="btn btn-dark">Details</a>
-                                    <a asp-controller="Cart" asp-action="Add" asp-route-id=@product.Id class="btn btn-danger">Add To Cart</a>
-                                </div>
+                                    <p class="card-text">@product.Product.Description</p>
+                                    <p class="fw-bold">Price <span class="badge bg-primary">@product.Product.Price</span></p>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Product.Id asp-route-returnUrl="@Context.Request.Path" class="btn btn-dark">Details</a>
+                                    @if (!product.IsInCart)
+                                    {
+                                        <a asp-controller="Cart" asp-action="Add" asp-route-id=@product.Product.Id class="btn btn-danger">Add To Cart</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Cart" asp-action="Remove" asp-route-id=@product.Product.Id class="btn btn-secondary">Delete From Cart</a>
+                                    }
+
+                                        
+                                   
+                                    </div>
                             </div>
                         </div>
                     }

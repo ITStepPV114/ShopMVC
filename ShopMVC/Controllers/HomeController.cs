@@ -1,7 +1,9 @@
 ﻿using DataAccess.Data;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using Microsoft.EntityFrameworkCore;
+using ShopMVC.Helper;
 using ShopMVC.Models;
 using System.Diagnostics;
 
@@ -48,6 +50,13 @@ namespace ShopMVC.Controllers
 
             }
 
+            var productsCartViewModel = products.Select(
+                p=>new ProductCartViewModel { 
+                    Product=p,
+                    IsInCart=IsProductInCart(p.Id)
+                    }
+                ).ToList();
+
             //for defination active link or disabled
             if (category_id == null)
             {
@@ -57,8 +66,14 @@ namespace ShopMVC.Controllers
                 ViewBag.ActiveCategoryId = category_id;
             }
            
-            return View(products);
+            return View(productsCartViewModel);
 
+        }
+
+        private bool IsProductInCart(int id) {
+            List<int> idList = HttpContext.Session.GetObject<List<int>>("mycart");
+            if (idList == null) return false;
+            return idList.Contains(id);
         }
 
         //public string Index(string name="Guest")

@@ -37,7 +37,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart  </a>
+                            @{
+                                var listProductInCart = Context.Session.GetObject<List<int>>("mycart");
+                            }
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
+                                Cart <i class="bi bi-cart4"></i> @(listProductInCart?.Count ?? 0)  
+                            </a>
                         </li>
                     </ul>
                 </div>
