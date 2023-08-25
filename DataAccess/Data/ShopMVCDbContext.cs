@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess.EntiitesConfiguration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using DataAccess.Enitities;
 
 namespace DataAccess.Data
 {

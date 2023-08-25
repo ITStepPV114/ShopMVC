@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using DataAccess.Enitities;
+using DataAccess.Entities;
 
 namespace ShopMVC.Areas.Identity.Pages.Account
 {

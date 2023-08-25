@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using DataAccess.Enitities;
+using DataAccess.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.

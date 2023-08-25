@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Enitities
+namespace DataAccess.Entities
 {
     public class Order
     {
@@ -12,6 +12,6 @@ namespace DataAccess.Enitities
         public DateTime OrderDate { get; set; }
         public string IdsProduct { get; set; } = string.Empty;
         public decimal TotalPrice { get; set; }
-        public string userId { get; set; }=string.Empty;
+        public string UserId { get; set; }=string.Empty;
     }
 }
