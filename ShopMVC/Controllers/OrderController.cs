@@ -1,5 +1,6 @@
 ﻿using DataAccess.Data;
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopMVC.Helper;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using System.Text.Json;
 
 namespace ShopMVC.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly ShopMVCDbContext _context;
