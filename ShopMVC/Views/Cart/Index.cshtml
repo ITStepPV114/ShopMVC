@@ -45,6 +45,7 @@
                 </tbody>
             </table>
             <p>Total: @Model.Sum(p=>p.Price) $</p>
+            <a asp-controller="Order" asp-action="Create" class="btn btn-primary">Confirm</a>
         </div>
 
     }

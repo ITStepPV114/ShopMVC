@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess.EntiitesConfiguration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using DataAccess.Enitities;
 
 namespace DataAccess.Data
 {
-    public class ShopMVCDbContext:IdentityDbContext<IdentityUser>
+    public class ShopMVCDbContext:IdentityDbContext<User>
     {
 
         //public ShopMVCDbContext()
@@ -27,7 +28,7 @@ namespace DataAccess.Data
             modelBuilder.Entity<Category>().HasData(SeedData.GetCategory());
             modelBuilder.Entity<Product>().HasData(SeedData.GetProduct());
 
-            #region Fluemt API => Configurations
+            #region Fluent API => Configurations
             ////Set Primary Key
             //modelBuilder.Entity<Product>().HasKey(x => x.Id);
 
@@ -53,6 +54,7 @@ namespace DataAccess.Data
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; } 
+        public DbSet<Order> Orders { get; set; }
 
     }
 }
