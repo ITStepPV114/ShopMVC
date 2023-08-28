@@ -12,6 +12,6 @@ namespace DataAccess.Entities
         public string? Surname { get; set; }
         public string? Firstname { get; set; }
         public DateTime Birthdate { get; set; }
-        public ICollection<Order> Orders {get; set;}
+        public ICollection<Order>? Orders {get; set;}
     }
 }
